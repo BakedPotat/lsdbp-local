@@ -135,7 +135,7 @@ if (isset($_GET["logout"])) {
 	              <a class="nav-link mx-2 active" aria-current="page" href="?logout=1">Loguot</a>
 	            </li>
 	            <li class="nav-item">
-	              <a class="nav-link mx-2" href="test.php">XML</a>
+	              <a class="nav-link mx-2" href="xml-receipt.php">XML</a>
 	            </li>
 	            <li class="nav-item">
 	              <a class="nav-link mx-2" href="#">Pricing</a>
