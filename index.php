@@ -11,6 +11,35 @@ if (isset($_GET["logout"])) {
     header("Location: login.php");
     exit();
 }
+
+
+if (isset($_SESSION["user_id"])) {
+    // Conexión a la base de datos
+    $conn = new mysqli("192.168.18.20", "lsdbp", "Coope2022", "db_users");
+
+    if ($conn->connect_error) {
+        die("Conexión fallida: " . $conn->connect_error);
+    }
+    
+    $user_id = $_SESSION["user_id"];
+    
+    // Consulta para obtener el nombre de usuario
+    $select_query = "SELECT username FROM usuarios WHERE id = '$user_id'";
+    $result = $conn->query($select_query);
+    
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $username = $row["username"];
+        // Ahora tienes el valor del nombre de usuario y puedes usarlo en tu aplicación
+    } else {
+        // Manejo si el usuario no se encuentra en la base de datos
+        $username = "Usuario no encontrado";
+    }
+    
+    $conn->close();
+}
+
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -138,14 +167,14 @@ if (isset($_GET["logout"])) {
 	              <a class="nav-link mx-2" href="xml-receipt.php">XML</a>
 	            </li>
 	            <li class="nav-item">
-	              <a class="nav-link mx-2" href="#">Pricing</a>
+	              <a class="nav-link mx-2" href="#">Bienvenido, <?php echo $username; ?></a>
 	            </li>
 	            <li class="nav-item dropdown">
 	              <a class="nav-link mx-2 dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 	                Company
 	              </a>
 	              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-	                <li><a class="dropdown-item" href="#">Blog</a></li>
+	                <li><a class="dropdown-item" href="#"></a></li>
 	                <li><a class="dropdown-item" href="#">About Us</a></li>
 	                <li><a class="dropdown-item" href="#">Contact us</a></li>
 	              </ul>
