@@ -13,14 +13,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     
     // Buscar el usuario en la base de datos
-    $sql = "SELECT id, username, password FROM usuarios WHERE username = '$username'";
+    $sql = "SELECT id, username, password, suscripcion_activa FROM usuarios WHERE username = '$username'";
     $result = $conn->query($sql);
     
     if ($result->num_rows == 1) {
         $row = $result->fetch_assoc();
         if (password_verify($password, $row["password"])) {
-            $_SESSION["user_id"] = $row["id"];
-            header("Location: index.php");
+            if ($row["suscripcion_activa"] == 1) {
+                $_SESSION["user_id"] = $row["id"];
+                header("Location: index.php");
+            } else {
+                header("Location: test.php"); // Redirigir a la página de pago
+            }
         } else {
             echo "Contraseña incorrecta";
         }
