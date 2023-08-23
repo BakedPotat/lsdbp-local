@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 header("Location: index.php");
             } else {
                 $_SESSION["user_id"] = $row["id"];
-                header("Location: test.php"); // Redirigir a la página de pago
+                header("Location: paypal_payment.php"); // Redirigir a la página de pago
             }
         } else {
             echo "Contraseña incorrecta";

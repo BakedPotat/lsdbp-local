@@ -37,7 +37,11 @@ if (!isset($_SESSION["user_id"])) {
                     }).then(response => {
                         if (response.ok) {
                             alert('Pago exitoso');
-                            window.location.href = 'index.php'; // Redirigir a la página principal
+                            window.location.href = 'xml-receipt.php'; // Primer redireccionamiento
+                            // Agregar el segundo redireccionamiento
+                            setTimeout(function() {
+                                window.location.href = 'index.php'; // Segundo redireccionamiento
+                            }, 3000); // Redireccionar después de 3 segundos
                         } else {
                             alert('Error en el pago');
                         }

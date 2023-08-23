@@ -32,6 +32,8 @@ $user_id = $_SESSION["user_id"];
 $sql = "SELECT username, cedula, telefono, correo FROM usuarios WHERE id = '$user_id'";
 $result = $conn->query($sql);
 
+
+
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
 
@@ -45,11 +47,25 @@ if ($result->num_rows > 0) {
     exit();
 }
 
+// Obtener la hora del servidor
+$server_time = date("Y-m-d\TH:i:s");
+
+
+// Generar un número aleatorio único
+$uniqueNumber = uniqid();
+
+// Formatear la hora del servidor
+$serverTimeFormatted = date("His");
+
+// Crear el código de venta
+$codigoVenta = "FAC-" . $serverTimeFormatted . "-" . $nombreReceptor . "-" . $uniqueNumber;
+
+
 // Construir el arreglo con los datos de la factura
 $facturaData = array(
     "FacturaElectronica" => array(
-        "CodigoVenta" => "123456789456",
-        "FechaEmision" => "2023-07-17T21:48:00",
+        "CodigoVenta" => $codigoVenta,
+        "FechaEmision" => $server_time,
         "CedulaEmisor" => "ABC117200436",
         "Receptor" => array(
             "NombreReceptor" => $nombreReceptor,
@@ -63,37 +79,37 @@ $facturaData = array(
             "LineaDetalle" => array(
                 array(
                     "NumeroLinea" => 1,
-                    "Codigo" => "AKA87",
-                    "Cantidad" => 2,
-                    "Detalle" => "Fichas VIP",
-                    "PrecioUnitario" => 2400.00000,
-                    "MontoTotal" => 4800.00000,
+                    "Codigo" => "Membership",
+                    "Cantidad" => 1,
+                    "Detalle" => "1-month Membership",
+                    "PrecioUnitario" => 10.00000,
+                    "MontoTotal" => 10.00000,
                     "Descuento" => array(
-                        "MontoDescuento" => 500.00000,
+                        "MontoDescuento" => 10.00000,
                         "NaturalezaDescuento" => "Porque me cae bien"
                     ),
-                    "SubTotal" => 4300.00000,
+                    "SubTotal" => 10.00000,
                     "Impuesto" => array(
                         "Codigo" => "01",
                         "CodigoTarifa" => "08",
-                        "Tarifa" => 13.00,
-                        "Monto" => 546.00000
+                        "Tarifa" => 0.00,
+                        "Monto" => 0.00000
                     ),
-                    "ImpuestoNeto" => 546.00000,
-                    "MontoTotalLinea" => 4846.00000
+                    "ImpuestoNeto" => 0.00000,
+                    "MontoTotalLinea" => 0.00000
                 )
             )
         ),
         "ResumenFactura" => array(
             "CodigoTipoMoneda" => array(
-                "CodigoMoneda" => "CRC",
+                "CodigoMoneda" => "USD",
                 "TipoCambio" => 1.00000
             ),
-            "TotalVenta" => 4800.00000,
-            "TotalDescuentos" => 500.00000,
-            "TotalVentaNeta" => 4800.00000,
-            "TotalImpuesto" => 546.00000,
-            "TotalComprobante" => 4800.00000
+            "TotalVenta" => 10.00000,
+            "TotalDescuentos" => 0.00000,
+            "TotalVentaNeta" => 10.00000,
+            "TotalImpuesto" => 10.00000,
+            "TotalComprobante" => 10.00000
         )
     )
 );
@@ -117,7 +133,7 @@ $response = curl_exec($ch);
 curl_close($ch);
 
 // Generar un archivo XML y ofrecerlo para descarga
-$xmlFilename = "respuesta_api.xml";
+$xmlFilename = "factura.xml";
 header('Content-Type: application/xml');
 header('Content-Disposition: attachment; filename="' . $xmlFilename . '"');
 echo $response;
