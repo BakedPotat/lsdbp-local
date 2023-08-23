@@ -69,6 +69,60 @@ $codigoVenta = "FAC-" . $serverTimeFormatted . "-" . $nombreReceptor . "-" . $un
 
 
 // Construir el arreglo con los datos de la factura
+/*$facturaData = array(
+    "FacturaElectronica" => array(
+        "CodigoVenta" => $codigoVenta,
+        "FechaEmision" => $server_time,
+        "CedulaEmisor" => "ABC117200436",
+        "Receptor" => array(
+            "NombreReceptor" => $nombreReceptor,
+            "TipoIdentificacionReceptor" => "01",
+            "NumeroCedulaReceptor" =>  $numeroCedulaReceptor,
+            "NumTelefonoReceptor" =>  $numTelefonoReceptor,
+            "CorreoElectronicoReceptor" => $correoElectronicoReceptor
+        ),
+        "MedioPago" => "02",
+        "DetalleServicio" => array(
+            "LineaDetalle" => array(
+                array(
+                    "NumeroLinea" => 1,
+                    "Codigo" => "Membership",
+                    "Cantidad" => 1,
+                    "Detalle" => "1-month Membership",
+                    "PrecioUnitario" => 10.00000,
+                    "MontoTotal" => 10.00000,
+                    "Descuento" => array(
+                        "MontoDescuento" => 10.00000,
+                        "NaturalezaDescuento" => "Porque me cae bien"
+                    ),
+                    "SubTotal" => 10.00000,
+                    "Impuesto" => array(
+                        "Codigo" => "01",
+                        "CodigoTarifa" => "08",
+                        "Tarifa" => 0.00,
+                        "Monto" => 0.00000
+                    ),
+                    "ImpuestoNeto" => 0.00000,
+                    "MontoTotalLinea" => 0.00000
+                )
+            )
+        ),
+        "ResumenFactura" => array(
+            "CodigoTipoMoneda" => array(
+                "CodigoMoneda" => "USD",
+                "TipoCambio" => 1.00000
+            ),
+            "TotalVenta" => 10.00000,
+            "TotalDescuentos" => 0.00000,
+            "TotalVentaNeta" => 10.00000,
+            "TotalImpuesto" => 10.00000,
+            "TotalComprobante" => 10.00000
+        )
+    )
+);*/
+
+
+// Construir el arreglo con los datos de la factura
 $facturaData = array(
     "FacturaElectronica" => array(
         "CodigoVenta" => $codigoVenta,
