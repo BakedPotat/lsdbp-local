@@ -133,7 +133,8 @@ $facturaData = array(
 // Convertir el arreglo a una cadena JSON
 $jsonDataString = json_encode($facturaData, JSON_PRETTY_PRINT);
 
-$apiUrl = "https://jellyfish-app-s4g2w.ondigitalocean.app/factura";
+//$apiUrl = "https://jellyfish-app-s4g2w.ondigitalocean.app/factura";
+$apiUrl = "http://10.90.31.154:5011/factura";
 
 $ch = curl_init($apiUrl);
 curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");

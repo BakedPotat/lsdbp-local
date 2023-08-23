@@ -168,7 +168,7 @@ if (isset($_SESSION["user_id"])) {
 	              <a class="nav-link mx-2 active" aria-current="page" href="?logout=1">Loguot</a>
 	            </li>
 				<li class="nav-item">
-	              <a class="nav-link mx-2 active" aria-current="page" href="xml-receipt.php">Text XML</a>
+	              <a class="nav-link mx-2 active" aria-current="page" href="xml-receipt.php">Test XML</a>
 	            </li>
 	          </ul>
 	        </div>
