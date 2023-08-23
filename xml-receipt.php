@@ -16,7 +16,7 @@ if (isset($_GET["logout"])) {
 $servername = "192.168.18.20";
 $username = "lsdbp";
 $password = "Coope2022";
-$dbname = "test";
+$dbname = "db_users";
 
 // Crear una conexión
 $conn = new mysqli($servername, $username, $password, $dbname);
