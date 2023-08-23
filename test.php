@@ -1,3 +1,13 @@
+<?php
+// Verificar la autenticación del usuario aquí
+session_start();
+
+if (!isset($_SESSION["user_id"])) {
+    // Redirigir a la página de inicio de sesión si el usuario no está autenticado
+    header("Location: login.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>

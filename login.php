@@ -23,6 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION["user_id"] = $row["id"];
                 header("Location: index.php");
             } else {
+                $_SESSION["user_id"] = $row["id"];
                 header("Location: test.php"); // Redirigir a la página de pago
             }
         } else {
