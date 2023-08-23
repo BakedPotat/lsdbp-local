@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $correo = $_POST["correo"];
     
     try {
-        // Conexión a la base de datos (cambia los valores según tu configuración)
+        // Conexión a la base de datos 
         $conn = new mysqli("192.168.18.20", "lsdbp", "Coope2022", "db_users");
 
         // Verificar la conexión

@@ -36,9 +36,9 @@ if (!isset($_SESSION["user_id"])) {
                         credentials: 'same-origin',
                     }).then(response => {
                         if (response.ok) {
-                            alert('Pago exitoso');
+                            alert('Pago exitoso, se va descargar su factura y será redirigido en 3 segundos');
                             window.location.href = 'xml-receipt.php'; // Primer redireccionamiento
-                            // Agregar el segundo redireccionamiento
+
                             setTimeout(function() {
                                 window.location.href = 'index.php'; // Segundo redireccionamiento
                             }, 3000); // Redireccionar después de 3 segundos

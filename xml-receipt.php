@@ -12,7 +12,7 @@ if (isset($_GET["logout"])) {
     exit();
 }
 
-// Conexión a la base de datos (cambia los valores según tu configuración)
+// Conexión a la base de datos 
 $servername = "192.168.18.20";
 $username = "lsdbp";
 $password = "Coope2022";
@@ -132,12 +132,28 @@ curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 $response = curl_exec($ch);
 curl_close($ch);
 
+
+// Guardar el XML en la base de datos
+$xmlContent = $response;
+
+$sqlGuardarXML = "INSERT INTO xml_registros (user_id, codigo_venta_unico, xml_content) VALUES ('$user_id', '$codigoVenta', '$xmlContent')";
+
+/*
+if ($conn->query($sqlGuardarXML) === TRUE) {
+    echo "El XML se ha guardado en la base de datos.";
+} else {
+    echo "Error al guardar el XML en la base de datos: " . $conn->error;
+}
+*/
+
+
 // Generar un archivo XML y ofrecerlo para descarga
 $xmlFilename = "factura.xml";
 header('Content-Type: application/xml');
 header('Content-Disposition: attachment; filename="' . $xmlFilename . '"');
 echo $response;
 exit; // Detener la ejecución del resto de la página
+
 
 $conn->close();
 ?>

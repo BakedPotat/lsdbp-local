@@ -30,9 +30,9 @@ if (isset($_SESSION["user_id"])) {
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
         $username = $row["username"];
-        // Ahora tienes el valor del nombre de usuario y puedes usarlo en tu aplicación
+
     } else {
-        // Manejo si el usuario no se encuentra en la base de datos
+
         $username = "Usuario no encontrado";
     }
     
@@ -297,16 +297,16 @@ if (isset($_SESSION["user_id"])) {
 	<script>
 
 
-		// NOW I CLICK album-poster TO GET CURRENT SONG ID
+		// NOW  CLICK album-poster TO GET CURRENT SONG ID
 		$(".album-poster").on('click', function(e){
 			var dataSwitchId = $(this).attr('data-switch');
 			//console.log(dataSwitchId);
 
-			// and now i use aplayer switch function see
+			// and now  use aplayer switch function see
 			ap.list.switch(dataSwitchId); //this is static id but i use dynamic 
 
 			// aplayer play function
-			// when i click any song to play
+
 			ap.play();
 
 			// click to slideUp player see
