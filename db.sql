@@ -25,3 +25,20 @@ BEGIN
 END;
 //
 DELIMITER ;
+
+CREATE TABLE xml_registros (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    codigo_venta_unico TEXT NOT NULL,
+    xml_content TEXT NOT NULL,
+    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+drop event desactivar_suscripciones;
+
+select * from db_users.usuarios;
+select * from db_users.xml_registros;
+
+drop database db_users;
+drop table db_users.xml_registros;
+
