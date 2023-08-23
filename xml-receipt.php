@@ -29,7 +29,7 @@ if ($conn->connect_error) {
 $user_id = $_SESSION["user_id"];
 
 // Consulta para obtener los datos del usuario desde la base de datos
-$sql = "SELECT username FROM usuarios WHERE id = '$user_id'";
+$sql = "SELECT username, cedula, telefono, correo FROM usuarios WHERE id = '$user_id'";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -50,13 +50,13 @@ $facturaData = array(
     "FacturaElectronica" => array(
         "CodigoVenta" => "123456789456",
         "FechaEmision" => "2023-07-17T21:48:00",
-        "CedulaEmisor" => "123456789",
+        "CedulaEmisor" => "ABC117200436",
         "Receptor" => array(
             "NombreReceptor" => $nombreReceptor,
             "TipoIdentificacionReceptor" => "01",
-            "NumeroCedulaReceptor" => 12334122,
-            "NumTelefonoReceptor" => 312312313,
-            "CorreoElectronicoReceptor" => "donpepe@gmail.com"
+            "NumeroCedulaReceptor" =>  $numeroCedulaReceptor,
+            "NumTelefonoReceptor" =>  $numTelefonoReceptor,
+            "CorreoElectronicoReceptor" => $correoElectronicoReceptor
         ),
         "MedioPago" => "02",
         "DetalleServicio" => array(
