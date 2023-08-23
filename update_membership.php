@@ -3,7 +3,8 @@ session_start();
 
 if (isset($_SESSION["user_id"])) {
     // Conexión a la base de datos
-    $conn = new mysqli("192.168.18.20", "lsdbp", "Coope2022", "db_users");
+    //$conn = new mysqli("192.168.18.20", "lsdbp", "Coope2022", "db_users");
+    $conn = new mysqli("192.90.31.125", "pepe", "Coope2022$", "db_users");
 
     if ($conn->connect_error) {
         die("Conexión fallida: " . $conn->connect_error);

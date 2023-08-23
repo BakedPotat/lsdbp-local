@@ -13,10 +13,17 @@ if (isset($_GET["logout"])) {
 }
 
 // Conexión a la base de datos 
-$servername = "192.168.18.20";
-$username = "lsdbp";
-$password = "Coope2022";
+//$servername = "192.168.18.20";
+//$username = "lsdbp";
+//$password = "Coope2022";
+//$dbname = "db_users";
+
+// Conexión a la base de datos 
+$servername = "10.90.31.125";
+$username = "pepe";
+$password = "Coope2022$";
 $dbname = "db_users";
+
 
 // Crear una conexión
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -110,7 +117,16 @@ $facturaData = array(
             "TotalVentaNeta" => 10.00000,
             "TotalImpuesto" => 10.00000,
             "TotalComprobante" => 10.00000
-        )
+        ),
+        "llave" => "-----BEGIN PUBLIC KEY-----
+                MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4nfHgRomJd1du79gObPo
+                tHfjP5N1mIwbzfb5wp/LKoHyOnoGbidhrLLLOvJp8cZrllkzcIyMzm3qeWVHmjnC
+                T5EXLPG/B5Ob9oevHL7G3BLA0v1ebW4ZYAdkTOgFvGrDzzS4vHXzhSfWhYK+NyYk
+                F32oQmmMRCVYPo2XkTXStyGN9/Cj9RusyZm0AM01Y6VEnjE6LMFAd9ITJpzvtsBx
+                vIMVcXyT1MKIAx8ubcFHIVSvD0JLSW2oXph7lEVoB5p9XUSZIdYMenJsNvzQffKP
+                XNYmUKe/K7XDdOzWZHU0pQw+hioFQvZQteaxqAzfsdXe8OXULIJJw1cf3rzUE2J6
+                vwIDAQAB
+                -----END PUBLIC KEY-----";
     )
 );
 
